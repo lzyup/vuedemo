@@ -8,7 +8,7 @@
             </li>
         </ul>
         <p>合计：{{total}}</p>
-        <p><button :disabled="!product.length" @click="checkout(products)">提交</button></p>
+        <p><button :disabled="!products.length" @click="checkout(products)">提交</button></p>
         <p v-show="checkoutStatus">提交{{checkoutStatus}}</p>
     </div>
 </template>
@@ -58,5 +58,5 @@ export default {
     mounted() {}
 };
 </script>
-<style lang='less' scoped>
+<style  scoped>
 </style>

@@ -1,10 +1,18 @@
 <template>
     <div id="app">
+        <h1>购物车示例</h1>
+        <p>账号：{{email}}</p>
+        <hr>
+        <h2>产品</h2>
+        <product-list></product-list>
+        <hr>
+        <shopping-cart></shopping-cart>
 
     </div>
 </template>
 
 <script>
+import { mapState } from "vuex";
 import ProductList from "./components/product-list";
 import ShoppingCart from "./components/shoppingcart";
 

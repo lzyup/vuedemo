@@ -1,14 +1,15 @@
 import shop from '../../api/shop'
 import { PRODUCTS } from '../mutation-types'
+
 // initial state
 const state = {
     all: []
 }
 
-//getters
-const getters = {},
+// getters
+const getters = {}
 
-//actions
+// actions
 const actions = {
     getAllProducts({ commit }) {
         shop.getProducts(products => {
@@ -17,6 +18,7 @@ const actions = {
     }
 }
 
+// mutations
 const mutations = {
     [PRODUCTS.SET_PRODUCTS](state, products) {
         state.all = products
@@ -35,4 +37,3 @@ export default {
     actions,
     mutations
 }
-
