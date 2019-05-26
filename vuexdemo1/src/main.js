@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import Vuex from './min-vuex'
 import App from './App.vue'
-// Vue.use(Vuex)
+Vue.use(Vuex)
 Vue.config.productionTip = false
 
 const store = new Vuex.Store({
@@ -15,14 +15,20 @@ const store = new Vuex.Store({
             state.count++
         }
     },
+    getters: {
+        doubleCount(state) {
+            return state.count * 2;
+        }
+    }
 })
 
 
 
-Vue.prototype.$store = store;
+// Vue.prototype.$store = store;
 /* eslint-disable no-new */
 new Vue({
     el: '#app',
+    store,
     components: { App },
     template: '<App/>'
 })
