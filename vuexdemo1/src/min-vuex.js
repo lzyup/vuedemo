@@ -4,9 +4,8 @@ function install(_Vue) {
     console.log('测试执行install方法----->')
     Vue = _Vue;
     function vuexInit() {
-        console.log('测试执行vuexInit方法----->')
+        // console.log('测试执行vuexInit方法----->')
         console.log('测试this------>', this);
-        console.log('测试this.options----->', this.$options);
         var options = this.$options;
         // store injection
         if (options.store) {
@@ -14,9 +13,9 @@ function install(_Vue) {
             this.$store = typeof options.store === 'function' ? options.store() : options.store;
 
         } else if (options.parent && options.parent.$store) {
-            console.log('测试进入else if------>');
-            console.log('测试options.parent--------->', options.parent);
-            console.log('测试options.parent.$store------>', options.parent.$store)
+            // console.log('测试进入else if------>');
+            // console.log('测试options.parent--------->', options.parent);
+            // console.log('测试options.parent.$store------>', options.parent.$store)
             //组件内部没有设定store,则从根App.vue下继承$store方法
             this.$store = options.parent.$store
         }
