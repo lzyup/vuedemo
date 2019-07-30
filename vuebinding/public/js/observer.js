@@ -3,7 +3,7 @@ function Observer(data) {
     this.walk(data);
 }
 Observer.prototype = {
-    onstructor: Observer,
+    constructor: Observer,
     walk: function (data) {
         var me = this;
         Object.keys(data).forEach(function (key) {
