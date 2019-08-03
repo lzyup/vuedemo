@@ -50,8 +50,9 @@ function observer(value, vm) {
 
 var uid = 0
 
-//Dep这个类是订阅者（观察者的依赖）的管理器
+//Dep这个类是消息管理员，管理发布者(dep)和订阅者（观察者的依赖）的管理器
 function Dep() {
+    //设置id,用于区分新watcher和只改变属性值后新产生的Watcher
     this.id = uid++;
     // subs管理订阅器即watcher
     this.subs = [];
