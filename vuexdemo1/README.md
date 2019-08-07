@@ -1,4 +1,5 @@
 # vuexdemo1
+实现简单的vuex
 
 > demo
 

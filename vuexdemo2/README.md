@@ -1,4 +1,5 @@
 # vuexdemo2
+vuex的使用范例（购物车）
 
 > A Vue.js project
 
