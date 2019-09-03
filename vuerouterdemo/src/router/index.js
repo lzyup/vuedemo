@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import RouterDemo from '../components/router-demo.vue'
 import RouterChildrenDemo from '../components/router-children-demo.vue'
+import SlotScope from "../components/scope-slot.vue"
 
 Vue.use(Router)
 
@@ -39,6 +40,9 @@ export default new Router({
         },
         {
             path: '*', component: RouterDemo, name: '404'
+        },
+        {
+            path: '/s', component: SlotScope, name: 'slot'
         }
     ]
 })

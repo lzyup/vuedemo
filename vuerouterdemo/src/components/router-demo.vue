@@ -12,6 +12,8 @@
         <br />
         <a href="#/foo">Go to Foo</a>
         <br />
+        <router-link to="/s">Go to slotScope</router-link>
+        <br />
         <button @click="$router.push('foo')">Go to Foo</button>
         <p>id:{{id}}</p>
         <p>{{routerInfo}}</p>
