@@ -15,8 +15,7 @@ Observer.prototype = {
     },
     defineReactive: function (data, key, val) {
         var dep = new Dep();
-        var childObj = observer(val);
-
+        var childObj = observer(val); 
         Object.defineProperty(data, key, {
             enumerable: true,//可枚举
             configurable: false,
@@ -40,7 +39,7 @@ Observer.prototype = {
     }
 }
 
-function observer(value, vm) {
+export function observer(value, vm) {
     if (!value || typeof value !== 'object') {
         return;
     }

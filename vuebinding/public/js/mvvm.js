@@ -1,4 +1,6 @@
+import { observe } from "./observer.js"
 function MVVM(options) {
+    console.log('测试111')
     this.$options = options || {};
     var data = this._data = this.$options.data;
     var me = this;
@@ -13,7 +15,7 @@ function MVVM(options) {
 
     observe(data, this);
 
-    this.$compile = new Compile(options.el || documennt.body, this);
+    this.$compile = new Compile(options.el || document.body, this);
 }
 
 MVVM.prototype = {

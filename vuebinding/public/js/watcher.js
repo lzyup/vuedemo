@@ -4,12 +4,14 @@ function Watcher(vm, expOrFn, cb) {
     this.expOrFn = expOrFn;//被订阅的数据
     this.depIds = {};//hash存储订阅者的id,避免重复的订阅者
 
+
     if (typeof expOrFn === 'function') {
         this.getter = expOrFn;
     } else {
         this.getter = this.parseGetter(expOrFn.trim());
     }
 
+    //此处为了触发属性的getter,从而在dep添加自己
     this.value = this.get();
 }
 
@@ -23,6 +25,7 @@ Watcher.prototype = {
         var oldValue = this.value;
         if (value !== oldValue) {
             this.value = value;
+            //收到通知，执行回调
             this.cb.call(this.vm, value, oldVal);
         }
     },

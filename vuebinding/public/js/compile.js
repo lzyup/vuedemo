@@ -33,14 +33,14 @@ Compile.prototype = {
 
         [].slice.call(childNodes).forEach(function (node) {
             var text = node.textContent;
-            var reg = /\{\{(.*)\}\}/;
-
+            var reg = /\{\{(.*)\}\}/; //表达式文本
+            // 按元素节点方式编译
             if (me.isElementNode(node)) {
                 me.compile(node);
             } else if (me.isTextNode(node) && reg.test(text)) {
                 me.compileText(node, RegExp.$1.trim());
             }
-
+            // 遍历编译子节点
             if (node.childNodes && node.childNodes.length) {
                 me.compileElement(node);
             }
@@ -52,6 +52,7 @@ Compile.prototype = {
             me = this;
 
         [].slice.call(nodeAttrs).forEach(function (attr) {
+            // 规定:指令以 v-xxx 命名
             var attrName = attr.name;
             if (me.isDirective(attrName)) {
                 var exp = attr.value;
@@ -122,10 +123,11 @@ var compileUtil = {
 
     bind: function (node, vm, exp, dir) {
         var updateFn = update[dir + 'Updater'];
-
+        //第一次初始化视图
         updaterFn && updateFn(node, this._getVMVal(vm, exp));
-
+        // 实例化订阅者，此操作会在对应的属性消息订阅器中添加了该订阅者watcher
         new Watcher(vm, exp, function (value, oldValue) {
+            //一旦属性值发生变化，会收到通知执行此更新函数，更新视图
             updaterFn && updaterFn(node, value, oldValue);
         })
     },
