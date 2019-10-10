@@ -1,5 +1,14 @@
 <template>
-
+    <div class="g-bd">
+        <div id="j-bd">
+            <div class="g-row m-index">
+                <v-header :nav-data="headNavData" />
+                <v-banner />
+                <v-floor-one />
+                <v-bottom-nav :bot-nav-data="botNavData" />
+            </div>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -24,16 +33,26 @@ export default {
             botNavData: []
         };
     },
-    created() {},
+    created() {
+        this.serviceGet();
+    },
     mounted() {},
     watch: {},
     methods: {
         serviceGet() {
             Service.get().then(data => {
                 this.headNavData = data;
+                console.log(
+                    "测试headNavData----->",
+                    JSON.stringify(this.headNavData)
+                );
             });
             Service.getBottom().then(data => {
                 this.botNavData = data;
+                console.log(
+                    "测试botNavData---->",
+                    JSON.stringify(this.botNavData)
+                );
             });
         },
         asyncData({ store, route }) {
@@ -51,5 +70,8 @@ export default {
 };
 </script>
 
-<style>
+<style lang="less" scoped>
+.mint-field {
+    background: #666;
+}
 </style>
